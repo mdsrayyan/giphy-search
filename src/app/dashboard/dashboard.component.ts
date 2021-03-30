@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   onScrollIndexChangedSubscription!: Subscription;
   loadMoreItemsSubscription!: Subscription;
   constructor(private api: GiphyApiService) {
-    this.query = ' ';
+    this.query = '';
   }
 
 

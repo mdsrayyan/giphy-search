@@ -1,0 +1,6 @@
+<mat-form-field appearance="outline" fxFlex="100%">
+  <mat-label>Search for Gifs</mat-label>
+  <input matInput placeholder="Enter text to search" [(ngModel)]="query" (ngModelChange)='queryModelChanged.next($event)'>
+  <mat-icon matSuffix *ngIf="query != ''">cancel</mat-icon>
+  <mat-hint *ngIf="loadedCount && totalCount">{{loadedCount}} / {{totalCount}}</mat-hint>
+</mat-form-field>

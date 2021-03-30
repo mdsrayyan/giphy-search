@@ -1,0 +1,14 @@
+.header-wrapper {
+  height: 3rem;
+  width: 100%;
+  background: crimson;
+  .header {
+    width: 70%;
+    .logo {
+      display: inline-block;
+      img {
+        height: 2rem;
+      }
+    }
+  }
+}

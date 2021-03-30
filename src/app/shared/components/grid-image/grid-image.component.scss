@@ -1,0 +1,19 @@
+.grid-image {
+  position: relative;
+  .image-meta-data{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: #000000b3;
+    .copy-clipboard {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      visibility: hidden;
+    }
+  }
+}
+
+.grid-image:hover .copy-clipboard {
+  visibility: visible;
+}

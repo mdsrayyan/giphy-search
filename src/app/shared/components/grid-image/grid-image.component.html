@@ -1,0 +1,14 @@
+<div class="grid-image">
+  <img [hidden]="loaded" class="img-loading" src="../../../../assets/loading.gif">
+  <a class="img-url" [href]="image?.bitly_url" target="_blank">
+  <img
+    class="img-loaded"
+    [hidden]="!loaded"
+    [src]="image?.images?.fixed_height?.url"
+    [alt]="image?.title"
+    (load)="loaded = true">
+  </a>
+
+</div>
+
+

@@ -3,9 +3,8 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { HttpClient } from '@angular/common/http';
 
 import { GiphyApiService } from './giphy-api.service';
-import { GiphySearchResult } from '../types';
-import { environment } from '../../environments/environment';
-
+import {GiphySearchResult} from '../../shared/models/giphy.model';
+import {environment} from '../../../environments/environment';
 describe('GiphyApiService', () => {
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
@@ -13,8 +12,12 @@ describe('GiphyApiService', () => {
 
   const mockData: GiphySearchResult = {
     data: [{ title: 'MockImage' }],
-    pagination: null,
-    meta: null,
+    pagination: {offset: 50, total_count: 300, count: 10},
+    meta: {
+      status: 2,
+      msg: 'sample message',
+      response_id: 'message_id'
+    },
   };
 
   beforeEach(() => {
@@ -39,7 +42,7 @@ describe('GiphyApiService', () => {
     });
 
     const req = httpTestingController.expectOne(
-      `${environment.api.url}?api_key=${environment.api.key}&q=${query}&limit=${limit}&offset=${offset}`
+      `${environment.url}?api_key=${environment.key}&q=${query}&limit=${limit}&offset=${offset}`
     );
     expect(req.request.method).toEqual('GET');
 
@@ -55,7 +58,7 @@ describe('GiphyApiService', () => {
     });
 
     const req = httpTestingController.expectOne(
-      `${environment.api.url}?api_key=${environment.api.key}&q=${query}&limit=${environment.app.requestLimit}&offset=${0}`
+      `${environment.url}?api_key=${environment.key}&q=${query}&limit=${environment.app.requestLimit}&offset=${0}`
     );
     expect(req.request.method).toEqual('GET');
 

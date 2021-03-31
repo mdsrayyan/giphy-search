@@ -16,7 +16,7 @@ export interface GiphyPaginationObject {
 export interface GiphyMetaObject {
   status: number;
   msg: string;
-  response_id: string;
+  response_id?: string;
 }
 
 // https://developers.giphy.com/docs/#gif-object

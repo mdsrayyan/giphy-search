@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {BehaviorSubject, Subject, Subscription} from 'rxjs';
+import {BehaviorSubject, Subscription} from 'rxjs';
 import {debounceTime, distinctUntilChanged, filter} from 'rxjs/operators';
-import {nonEmptyPredicate} from '../core/util/helper.service';
+import {HelperService} from '../core/util/helper.service';
 import {GiphyGifObject, GiphyPaginationObject, GiphySearchResult} from '../shared/models/giphy.model';
 import {GiphyApiService} from '../core/services/giphy-api.service';
 import {CdkVirtualScrollViewport} from '@angular/cdk/scrolling';
@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   queryModelChangedSubscription!: Subscription;
   onScrollIndexChangedSubscription!: Subscription;
   loadMoreItemsSubscription!: Subscription;
-  constructor(private api: GiphyApiService) {
+  constructor(private api: GiphyApiService, private helperService: HelperService) {
     this.query = '';
   }
 
@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.queryModelChangedSubscription = this.queryModelChanged
       .pipe(
         debounceTime(500),
-        filter(nonEmptyPredicate),
+        filter(this.helperService.nonEmptyPredicate),
         distinctUntilChanged()
       )
       .subscribe(newValue => {

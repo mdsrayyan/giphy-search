@@ -1,6 +1,6 @@
 <div fxLayout="column" fxLayoutGap="0.5rem" class="dashboard-wrapper">
   <app-search [queryModelChanged]="queryModelChanged" [query]="query" class="search-bar"
-              [loadedCount]="images?.length" [totalCount]="pagination?.total_count"></app-search>
+              [loadedCount]="images?.length" [totalCount]="pagination?.total_count" [error] ="error"></app-search>
   <cdk-virtual-scroll-viewport itemSize="50" fxLayoutAlign="center center">
     <div *ngIf="images" id="image-list-wrapper" fxLayout="row wrap" fxLayoutGap="0.5rem" fxLayoutAlign="center center">
       <ng-container *cdkVirtualFor="let image of images; templateCacheSize: 200">

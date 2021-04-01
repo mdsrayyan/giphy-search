@@ -15,6 +15,8 @@ export class SearchComponent implements OnInit {
   totalCount!: number | undefined;
   @Input()
   query!: string;
+  @Input()
+  error!: boolean;
   constructor() { }
 
   ngOnInit(): void {

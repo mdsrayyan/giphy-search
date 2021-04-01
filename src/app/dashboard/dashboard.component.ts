@@ -23,6 +23,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   queryModelChangedSubscription!: Subscription;
   onScrollIndexChangedSubscription!: Subscription;
   loadMoreItemsSubscription!: Subscription;
+
   constructor(private api: GiphyApiService, private helperService: HelperService) {
     this.query = '';
   }
@@ -33,6 +34,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.search();
   }
 
+  /**
+   * @summary Subscribes to query change and calls respective method
+   * Also filter the non empty strings and distinct results to exclude unwanted search results
+   */
   subscribeToQueryChange(): void {
     this.queryModelChangedSubscription = this.queryModelChanged
       .pipe(
@@ -46,6 +51,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
       });
   }
 
+  /**
+   * @summary Calls API service with the searched query
+   * Image data is processed here and additional subscriptions are reset
+   */
   search(): void {
     this.api.get(this.query).subscribe((result: GiphySearchResult) => {
       this.pagination = result.pagination;
@@ -59,6 +68,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * @summary Subscribes to scroll change to set the context for onScrollChange method
+   */
   subscribeToScroll(): void {
     this.onScrollIndexChangedSubscription = this.virtualScroll.scrolledIndexChange
       .pipe(
@@ -70,6 +82,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
       );
   }
 
+  /**
+   * @summary Calculate the logic to load more data
+   * @param scrollIndex - This is being set during scroll subscription from 'subscribeToScroll' method
+   */
   onScrollIndexChanged(scrollIndex: number): void {
     // check whether the user has scrolled reaching the scrollRequestThreshold
     if (this.pagination && (scrollIndex >= Math.floor(this.images.length * this.scrollRequestThreshold / 100))) {
@@ -80,6 +96,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * @summary Calls API service to load more images
+   * Also handles the error scenario when service errored out
+   */
   loadMoreItems(): void {
     if (this.loadMoreItemsSubscription) {
       this.loadMoreItemsSubscription.unsubscribe();

@@ -1,5 +1,7 @@
 <mat-form-field appearance="outline" fxFlex="100%">
   <mat-label>Search for Gifs</mat-label>
   <input matInput placeholder="Enter text to search" [(ngModel)]="query" (ngModelChange)='queryModelChanged.next($event)'>
-  <mat-hint *ngIf="loadedCount && totalCount">{{loadedCount}} / {{totalCount}}</mat-hint>
+  <mat-hint *ngIf="loadedCount && totalCount && !error">{{loadedCount}} / {{totalCount}}</mat-hint>
+  <mat-hint *ngIf="error" class="error">Something wrong while getting data, Please try after some time. We apologise for inconvenience</mat-hint>
+  <mat-error *ngIf="error"></mat-error>
 </mat-form-field>

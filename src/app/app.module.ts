@@ -7,12 +7,10 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {SharedModule} from './shared/shared.module';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { HelperComponent } from './core/util/helper/helper.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HelperComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

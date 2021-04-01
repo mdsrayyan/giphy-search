@@ -15,6 +15,9 @@ export class GridImageComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  /**
+   * @summary Acknowledge message when user clicks on copy button
+   */
   acknowledgeCopy(): void {
     this.snackBar.open('Link copied to clipboard', '' , {
       duration: 2000,

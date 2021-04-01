@@ -114,6 +114,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * @summary Resets the scroll subscription when called for
+   */
   resetScrollSubscription(): void {
     if (this.onScrollIndexChangedSubscription) {
       this.onScrollIndexChangedSubscription.unsubscribe();

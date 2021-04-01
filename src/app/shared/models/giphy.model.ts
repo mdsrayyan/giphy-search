@@ -1,25 +1,22 @@
-// https://developers.giphy.com/docs/#operation--gifs-search-get
+
 export interface GiphySearchResult {
   data: GiphyGifObject[];
   pagination: GiphyPaginationObject;
   meta: GiphyMetaObject;
 }
 
-// https://developers.giphy.com/docs/#pagination-object
 export interface GiphyPaginationObject {
   total_count: number;
   count: number;
   offset: number;
 }
 
-// https://developers.giphy.com/docs/#metacontent-object
 export interface GiphyMetaObject {
   status: number;
   msg: string;
   response_id?: string;
 }
 
-// https://developers.giphy.com/docs/#gif-object
 export interface GiphyGifObject {
   type?: string;
   id?: string;
@@ -41,7 +38,6 @@ export interface GiphyGifObject {
   title?: string;
 }
 
-// https://developers.giphy.com/docs/#images-object
 export interface GiphyImages {
   fixed_height_still?: GiphyImageBaseData;
   original_still?: GiphyImageBaseData;

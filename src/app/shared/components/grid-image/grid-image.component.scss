@@ -1,19 +1,23 @@
 .grid-image {
   position: relative;
+  img {
+    padding: 0.5rem;
+  }
   .image-meta-data{
     position: absolute;
     bottom: 0;
     width: 100%;
-    background: #000000b3;
+    height: 25%;
+    visibility: hidden;
+    background: linear-gradient(0deg, #000000 0%, #0000007d 35%, #00000000 100%);
     .copy-clipboard {
       position: absolute;
       bottom: 1rem;
       right: 1rem;
-      visibility: hidden;
     }
   }
 }
 
-.grid-image:hover .copy-clipboard {
+.grid-image:hover .image-meta-data{
   visibility: visible;
 }

@@ -9,6 +9,8 @@ import {SearchComponent} from './components/search/search.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {HeaderComponent} from './components/header/header.component';
+import {ClipboardModule} from '@angular/cdk/clipboard';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 
@@ -22,7 +24,9 @@ import {HeaderComponent} from './components/header/header.component';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    ClipboardModule,
+    MatSnackBarModule
   ],
   exports: [GridImageComponent, FlexLayoutModule, SearchComponent, HeaderComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {GiphyGifObject} from '../../models/giphy.model';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-grid-image',
@@ -10,9 +11,14 @@ export class GridImageComponent implements OnInit {
   @Input()
   image!: GiphyGifObject;
   loaded = false;
-  constructor() { }
+  constructor(private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+  }
+  acknowledgeCopy(): void {
+    this.snackBar.open('Link copied to clipboard', '' , {
+      duration: 2000,
+    });
   }
 
 }

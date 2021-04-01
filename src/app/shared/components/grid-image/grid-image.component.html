@@ -1,14 +1,24 @@
 <div class="grid-image">
-  <img [hidden]="loaded" class="img-loading" src="../../../../assets/loading.gif">
-  <a class="img-url" [href]="image?.bitly_url" target="_blank">
-  <img
-    class="img-loaded"
-    [hidden]="!loaded"
-    [src]="image?.images?.fixed_height?.url"
-    [alt]="image?.title"
-    (load)="loaded = true">
+  <img [hidden]="loaded" alt="Image being loaded" class="img-loading" src="../../../../assets/loading.gif">
+  <a [href]="image?.images?.fixed_height?.url" class="img-url" target="_blank">
+    <picture>
+      <img
+        (load)="loaded = true"
+        [alt]="image?.title"
+        [hidden]="!loaded"
+        [src]="image?.images?.fixed_height?.url"
+        class="img-loaded">
+    </picture>
   </a>
-
+  <div class="image-meta-data">
+    <button (cdkCopyToClipboardCopied)="acknowledgeCopy()"
+            [cdkCopyToClipboard]="image?.images?.fixed_height?.url || ''"
+            aria-label="copy to clipboard" class="copy-clipboard"
+            color="secondary"
+            mat-fab>
+      <span class="material-icons">link</span>
+    </button>
+  </div>
 </div>
 
 

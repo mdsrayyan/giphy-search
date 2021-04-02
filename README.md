@@ -52,14 +52,15 @@ This project makes use of
 
 - This project structure is well suitable for enterprise level applications to small scale applications.
 - Configured with latest tslint rules
-- Husky is in place to check linting for every commit
+- Husky is in place to check linting, unit test and end to end test cases for every commit
 - Equipped with code snippets to help developers to ease the process of documentation
 - Project uses Angular Material for UX (opiniated)
-- Uses Flex to make sure the application is fully responsive
+- Uses CDK Virtual scroll for pagination from Angular Material[here](https://material.angular.io/cdk/scrolling/overview)
+- Uses Flex layout library
 
 # Deployment
 
-Before deployment, Husky scripts check for linting. Not meeting the check wont let you to push the code to repo.
+Before deployment, Husky scripts check for linting, Unit Testing and End-To-End tests. Not meeting the check wont let you to push the code to repo.
 After the successful check, code will be pushed to the corresponding branch in github and automatic scripts are in place to deploy it to netlify.
 
 check live app after deployment [here](https://giphy-search-demo.netlify.app)
@@ -76,7 +77,7 @@ Run `npm run update` to update to latest version.
 
 # Environment
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.3.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.7.
 
 ## Development server
 
@@ -98,10 +99,7 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 # Possible improvements
 
-1. Unit test case coverage could have been done, But due to time constrain it wasn't. You can always look for other projects in my repo for reference. 
-2. Rich text support for user to make editing a little easier.
-3. Form control name is used instead of form control to avoid strict type issues.
-4. More usage of NgRx store could have been done.
-5. Could have written e2e test cases.
-6. Multiple image upload option and proper loaders.
+1. Unit test case coverage could have been done better
+2. Could have added embed link
+3. Could have added trending gifs in dash-board when landing
 

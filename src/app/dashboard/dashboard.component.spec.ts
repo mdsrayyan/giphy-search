@@ -51,7 +51,7 @@ describe('DashboardComponent', () => {
   });
 
   it('search() should flag the error field when the http request fails', () => {
-    spyOn(TestBed.get(GiphyApiService), 'get').and.returnValue(throwError('something wrong happened'));
+    spyOn(TestBed.inject(GiphyApiService), 'get').and.returnValue(throwError('something wrong happened'));
     component.error = false;
 
     component.search();

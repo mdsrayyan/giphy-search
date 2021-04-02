@@ -1,4 +1,4 @@
-# Chef Book
+# Giphy Search
 
 - [Giphy Search](#giphy-search)
 - [Introduction](#introduction)

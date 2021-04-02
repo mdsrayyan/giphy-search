@@ -31,7 +31,18 @@ describe('DashboardComponent', () => {
   /* Unit tests */
 
   it('search() should correctly update the pagination and images fields and correctly reset the scroll', () => {
-    const spyApiGet = spyOn(TestBed.get(GiphyApiService), 'get').and.returnValue(of({}));
+    const spyApiGet = spyOn(TestBed.inject(GiphyApiService), 'get').and.returnValue(of({
+      data: [],
+      pagination: {
+        total_count: 0,
+        count: 0,
+        offset: 0
+      },
+      meta: {
+        status: 1,
+        msg: ''
+      }
+    }));
     const spyScrollToIndex = spyOn(component.virtualScroll, 'scrollToIndex');
     const query = 'this is my query';
     component.query = query;
@@ -80,10 +91,17 @@ describe('DashboardComponent', () => {
   });
 
   it('Should call load more when threshold limit reaches', () => {
-    const spyApiGet = spyOn(TestBed.get(GiphyApiService), 'get').and.returnValue(of( {
+    const spyApiGet = spyOn(TestBed.inject(GiphyApiService), 'get').and.returnValue(of( {
       data: [],
-      pagination: {},
-      meta: {}
+      pagination: {
+        total_count: 0,
+        count: 0,
+        offset: 0
+      },
+      meta: {
+        status: 1,
+        msg: ''
+      }
     }));
     component.pagination = {
       total_count: 3000,

@@ -7,7 +7,7 @@
     "build": "ng build --prod",
     "test": "ng test  --watch=false --code-coverage",
     "lint": "ng lint",
-    "e2e": "ng e2e",
+    "e2e": "ng e2e --port 4300",
     "prepare": "husky install"
   },
   "private": true,

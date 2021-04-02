@@ -29,7 +29,7 @@ describe('GiphyApiService', () => {
 
     httpClient = TestBed.inject(HttpClient);
     httpTestingController = TestBed.inject(HttpTestingController);
-    service = TestBed.get(GiphyApiService);
+    service = TestBed.inject(GiphyApiService);
   });
 
   it('get() should correctly send the http request and return the data', () => {
